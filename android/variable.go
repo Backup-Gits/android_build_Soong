@@ -20,7 +20,7 @@ import (
 	"runtime"
 	"strings"
 
-	"aosp/soong/android_aosp"
+	"rebellion/soong/android_rebellion"
 
 	"github.com/google/blueprint/proptools"
 )
@@ -127,8 +127,8 @@ type variableProperties struct {
 			Srcs         []string
 		}
 
-		// include Aosp variables
-		Aosp android_aosp.Product_variables
+		// include Rebellion variables
+		Rebellion android_rebellion.Product_variables
 	} `android:"arch_variant"`
 }
 
@@ -293,8 +293,8 @@ type productVariables struct {
 
 	TargetFSConfigGen []string `json:",omitempty"`
 
-	// include Aosp variables
-	Aosp android_aosp.ProductVariables
+	// include Rebellion variables
+	Rebellion android_rebellion.ProductVariables
 }
 
 func boolPtr(v bool) *bool {

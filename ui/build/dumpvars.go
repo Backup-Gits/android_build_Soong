@@ -125,9 +125,9 @@ func dumpMakeVars(ctx Context, config Config, goals, vars []string, write_soong_
 var BannerVars = []string{
 	"PLATFORM_VERSION_CODENAME",
 	"PLATFORM_VERSION",
-	"EXTENDED_MOD_VERSION",
-	"EXTENDED_VERSION",
-	"TARGET_PRODUCT",
+        "REBELLION_VERSION_BASE",
+        "REBELLION_VERSION_CUSTOM",
+ 	"TARGET_PRODUCT",
 	"TARGET_BUILD_VARIANT",
 	"TARGET_BUILD_TYPE",
 	"TARGET_BUILD_APPS",
@@ -157,23 +157,21 @@ var BannerVars = []string{
 func Banner(make_vars map[string]string) string {
 	b := &bytes.Buffer{}
 
-        fmt.Fprintln(b, "============================================")
-	fmt.Fprintln(b, "                                            ")
-	fmt.Fprintln(b, "          ▄▄▄      ▓█████ ▒██   ██▒         ")
-	fmt.Fprintln(b, "         ▒████▄    ▓█   ▀ ▒▒ █ █ ▒░         ")
-	fmt.Fprintln(b, "         ▒██  ▀█▄  ▒███   ░░  █   ░         ")
-	fmt.Fprintln(b, "         ░██▄▄▄▄██ ▒▓█  ▄  ░ █ █ ▒          ")
-	fmt.Fprintln(b, "          ▓█   ▓██▒░▒████▒▒██▒ ▒██▒         ")
-	fmt.Fprintln(b, "          ▒▒   ▓▒█░░░ ▒░ ░▒▒ ░ ░▓ ░         ")
-	fmt.Fprintln(b, "           ▒   ▒▒ ░ ░ ░  ░░░   ░▒ ░         ")
-	fmt.Fprintln(b, "           ░   ▒      ░    ░    ░           ")
-	fmt.Fprintln(b, "               ░  ░   ░  ░ ░    ░           ")
-	fmt.Fprintln(b, "                                            ")
-	fmt.Fprintf(b, "        AospExtended-%s %s %s\n", make_vars["EXTENDED_VERSION"], make_vars["PLATFORM_VERSION"], make_vars["TARGET_PLATFORM_VERSION"] )
-	fmt.Fprintln(b, "============================================")
+        fmt.Fprintln(b, "===========================")
+	fmt.Fprintln(b, "██▀███   ▒█████    ██████  ")
+	fmt.Fprintln(b, "▓██ ▒ ██▒▒██▒  ██▒▒██    ▒ ")
+	fmt.Fprintln(b, "▓██ ░▄█ ▒▒██░  ██▒░ ▓██▄   ")
+	fmt.Fprintln(b, "▒██▀▀█▄  ▒██   ██░  ▒   ██▒")
+	fmt.Fprintln(b, "░██▓ ▒██▒░ ████▓▒░▒██████▒▒")
+	fmt.Fprintln(b, "░ ▒▓ ░▒▓░░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░")
+	fmt.Fprintln(b, "  ░▒ ░ ▒░  ░ ▒ ▒░ ░ ░▒  ░ ░")
+        fmt.Fprintln(b, "  ░░   ░ ░ ░ ░ ▒  ░  ░  ░  ")
+        fmt.Fprintln(b, "   ░         ░ ░        ░  ")
+	fmt.Fprintf(b,  "Rebellion-OS-%s %s %s\n", make_vars["REBELLION_CUSTOM_VERSION"], make_vars["PLATFORM_VERSION"], make_vars["TARGET_PLATFORM_VERSION"] )
+	fmt.Fprintln(b, "============================")
 	fmt.Fprintln(b, "============================================")
 	for _, name := range BannerVars {
-		if make_vars[name] != "" && name != "EXTENDED_VERSION" {
+		if make_vars[name] != "" && name != "REBELLION_VERSION" {
 			fmt.Fprintf(b, "%s=%s\n", name, make_vars[name])
 		}
 	}
